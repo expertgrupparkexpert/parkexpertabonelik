@@ -105,6 +105,218 @@
             position: relative;
         }
 
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a2540 0%, #1a4570 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        #loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-logo {
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .loading-p {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #0a2540;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            line-height: 100px;
+            font-size: 60px;
+            font-weight: 800;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 215, 0, 0.3);
+            border-top: 4px solid #ffd700;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* WhatsApp Widget */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366 0%, #20ba5a 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .whatsapp-widget:hover {
+            width: 180px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+            transform: scale(1.05);
+        }
+
+        .whatsapp-icon {
+            width: 32px;
+            height: 32px;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-widget:hover .whatsapp-icon {
+            margin-right: 10px;
+        }
+
+        .whatsapp-text {
+            opacity: 0;
+            width: 0;
+            font-weight: 600;
+            font-size: 16px;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-widget:hover .whatsapp-text {
+            opacity: 1;
+            width: auto;
+        }
+
+        /* Floating Animation */
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .whatsapp-widget {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.98) 0%, rgba(26, 69, 112, 0.98) 100%);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .cookie-consent.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-content p {
+            color: white;
+            font-size: 14px;
+            line-height: 1.6;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #0a2540;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            white-space: nowrap;
+        }
+
+        .cookie-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 7px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Animated background particles */
         .particles {
             position: fixed;
@@ -522,10 +734,72 @@
                 width: 100%;
                 max-width: 300px;
             }
+
+            .whatsapp-widget {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .whatsapp-widget:hover {
+                width: 55px;
+            }
+
+            .whatsapp-text {
+                display: none;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+            }
+
+            .loading-text {
+                font-size: 24px;
+            }
+
+            .loading-p {
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+                font-size: 48px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <span class="loading-p">P</span>
+            </div>
+            <div class="loading-text">ParkExpert</div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Widget -->
+    <a href="https://wa.me/905016183482?text=Merhaba,%20otopark%20aboneliği%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="whatsapp-widget" id="whatsapp-widget">
+        <svg viewBox="0 0 32 32" class="whatsapp-icon">
+            <path fill="currentColor" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.396 5.177 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.924 0-7.435 6.044-13.479 13.479-13.479s13.479 6.044 13.479 13.479-6.044 13.479-13.479 13.479zM21.729 18.688c-0.236-0.119-1.394-0.688-1.61-0.766s-0.373-0.119-0.531 0.119c-0.157 0.238-0.611 0.766-0.748 0.923s-0.275 0.178-0.512 0.059c-0.236-0.119-0.999-0.368-1.901-1.173-0.703-0.627-1.177-1.401-1.315-1.639s-0.014-0.366 0.104-0.484c0.107-0.107 0.236-0.275 0.354-0.413s0.157-0.236 0.236-0.393c0.079-0.157 0.039-0.295-0.020-0.413s-0.531-1.277-0.728-1.75c-0.177-0.462-0.374-0.393-0.531-0.393-0.138 0-0.295-0.020-0.453-0.020s-0.413 0.059-0.63 0.295c-0.216 0.236-0.827 0.807-0.827 1.969s0.846 2.283 0.964 2.441c0.118 0.157 1.67 2.548 4.046 3.573 0.566 0.236 1.006 0.393 1.35 0.492 0.567 0.177 1.083 0.157 1.492 0.098 0.453-0.079 1.394-0.571 1.59-1.122s0.197-1.024 0.138-1.122c-0.059-0.099-0.216-0.157-0.453-0.275z"></path>
+        </svg>
+        <span class="whatsapp-text">WhatsApp</span>
+    </a>
+
+    <!-- Cookie Consent -->
+    <div id="cookie-consent" class="cookie-consent">
+        <div class="cookie-content">
+            <p>🍪 Bu web sitesi, deneyiminizi geliştirmek için çerezler kullanmaktadır. Siteyi kullanmaya devam ederek çerez kullanımını kabul etmiş olursunuz.</p>
+            <button id="accept-cookies" class="cookie-btn">Kabul Et</button>
+        </div>
+    </div>
+
     <!-- Background Particles -->
     <div class="particles" id="particles"></div>
 
@@ -618,6 +892,53 @@
     </div>
 
     <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            setTimeout(function() {
+                loadingScreen.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Cookie Consent
+        const cookieConsent = document.getElementById('cookie-consent');
+        const acceptCookies = document.getElementById('accept-cookies');
+
+        // Check if user already accepted cookies
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(function() {
+                cookieConsent.classList.add('show');
+            }, 2000);
+        }
+
+        acceptCookies.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieConsent.classList.remove('show');
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.location-card, .contact-info');
+            fadeElements.forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
+            });
+        });
+
         // Create animated particles
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 50; i++) {
@@ -648,6 +969,55 @@
                 if (e.target.classList.contains('apply-btn')) return;
                 const btn = this.querySelector('.apply-btn');
                 btn.click();
+            });
+        });
+
+        // Performance optimization - Lazy load images
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.dataset.src;
+            });
+        } else {
+            // Fallback for browsers that don't support lazy loading
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+            document.body.appendChild(script);
+        }
+
+        // Track WhatsApp widget clicks
+        document.getElementById('whatsapp-widget').addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': 'WhatsApp Widget',
+                    'event_label': 'WhatsApp Chat Started'
+                });
+            }
+        });
+
+        // Track form button clicks
+        document.querySelectorAll('.apply-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const location = this.closest('.location-card').querySelector('.location-name').textContent;
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'click', {
+                        'event_category': 'Application Form',
+                        'event_label': location
+                    });
+                }
+            });
+        });
+
+        // Track contact button clicks
+        document.querySelectorAll('.contact-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const btnType = this.classList.contains('phone-btn') ? 'Phone' : 'WhatsApp';
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'click', {
+                        'event_category': 'Contact',
+                        'event_label': btnType
+                    });
+                }
             });
         });
     </script>
